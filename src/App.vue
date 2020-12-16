@@ -6,25 +6,30 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import { getSeller } from "api";
+import HelloWorld from './components/HelloWorld.vue';
+import { getSeller } from 'api';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     HelloWorld,
   },
-  data(){
+  data() {
     return {
-      seller: {}
-    }
+      seller: {},
+    };
   },
-  created(){
-    getSeller().then((seller) => {
-      this.seller = seller
-      console.log('this.seller: ', this.seller);
-    })
-  }
+  created() {
+    this._getSeller()
+  },
+  methods: {
+    _getSeller() {
+      getSeller().then((seller) => {
+        this.seller = seller;
+        console.log("this.seller: ", this.seller);
+      });
+    },
+  },
 };
 </script>
 
